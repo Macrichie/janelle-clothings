@@ -1,9 +1,11 @@
 import React from 'react'
+
 import FormInput from '../form-input/FormInput.component'
+import CustomButton from '../custom-button/CustomButton.component'
+
 import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
 import './sign-in.styles.scss'
-import CustomButton from '../custom-button/CustomButton.component'
 
 class Signin extends React.Component {
     constructor(props) {
@@ -21,7 +23,7 @@ class Signin extends React.Component {
         const { email, password } = this.state
 
         try {
-            await auth.createUserWithEmailAndPassword(email, password)
+            await auth.signInWithEmailAndPassword(email, password)
             this.setState({
                 email:'',
                 password: ''
